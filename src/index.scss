@@ -1,3 +1,12 @@
+
+@font-face {
+  font-family: summerFont;
+  src: url(./../public/assets/files/SummerFont-Light.otf) format('opentype');
+}
+@font-face {
+  font-family: sfprotext;
+  src: url(./../public/assets/files/SF-Pro-Text-Light.otf) format('opentype');
+}
 *{
   margin:0;
   padding:0;
@@ -8,5 +17,19 @@ a {
   &, &:hover {
     text-decoration: none;
   }
+}
+h1, .container.article p{
+  font-family: sfprotext, "Agency FB", sans-serif;
+}
+h1 {
+  font-size: 2.5rem;
+}
+nav ul a {
+  font-family: summerFont, sans-serif;
+  font-size: 1.8rem;
+  text-transform: lowercase;
+}
+main {
+  margin-top: 125px;
 }
 

@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.3.1",
+    "classnames": "^2.2.6",
     "jquery": "3.4.1",
     "materialize-css": "^1.0.0-rc.2",
     "materialize-sass": "^0.98.2",
@@ -14,7 +15,7 @@
     "react-scripts": "3.1.1"
   },
   "scripts": {
-    "start": " npx webpack",
+    "start": " npx webpack && npx webpack-dev-server",
     "build": "npx webpack",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

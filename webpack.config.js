@@ -11,7 +11,7 @@ const postCssPresetEnv = require('postcss-preset-env');
 
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 
-const PurgecssPluagin = require('purgecss-webpack-plugin');
+const PurgeCSSPlugin = require('purgecss-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const Critters = require('critters-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -19,7 +19,8 @@ module.exports = {
     mode: "development",
     entry: path.resolve(__dirname, 'src/index'),
     output: {
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/',
     },
     optimization: {
         splitChunks: {
@@ -32,6 +33,20 @@ module.exports = {
                 },
             },
         },
+    },
+    devServer: {
+        historyApiFallback: true,
+        hot: true,
+        inline: true,
+        progress: true,
+
+        stats: 'errors-only',
+
+        port: 5000,
+
+        // CopyWebpackPlugin: This is required for webpack-dev-server.
+        // The path should be an absolute path to your build destination.
+        contentBase: path.join(__dirname, 'dist')
     },
     module: {
         rules: [
@@ -47,7 +62,14 @@ module.exports = {
                     {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
-                            sourceMap: true
+                            ignoreOrder: true,
+                            sourceMap: true,
+                            publicPath: (resourcePath, context) => {
+                                // publicPath is the relative path of the resource to the context
+                                // e.g. for ./css/admin/main.css the publicPath will be ../../
+                                // while for ./css/main.css the publicPath will be ../
+                                return path.relative(path.dirname(resourcePath), context) + '/';
+                            },
                         }
                     },
                     {
@@ -71,15 +93,6 @@ module.exports = {
                     {
                         loader: 'sass-loader',
                     },
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            ident: 'postcss-1',
-                            plugins: [
-                                postCssPresetEnv()
-                            ]
-                        }
-                    },
                 ]
             },
             {
@@ -98,7 +111,22 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(ico|svg)$/,
+                test: /\.ico$/,
+                use: [
+                    {
+                        loader: "file-loader",
+                        options: {
+                            name: '[name].[ext]',
+                            context: path.resolve(__dirname, 'public/assets/images/'),
+                            outputPath: 'assets/images',
+                            publicPath: '/assets/images',
+                            useRelativePath: true
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.(svg)$/,
                 use: [
                     {
                         loader: "url-loader",
@@ -151,18 +179,22 @@ module.exports = {
             popper: 'popper.js'
 
         }),
-        new PurgecssPluagin({
+        new PurgeCSSPlugin({
             paths: glob.sync(`${path.resolve(__dirname, 'src')}/**/*`, {nodir: true}),
         }),
-
         new MiniCssExtractPlugin({
         }),
-        new BrowserSyncPlugin({
-            host: 'localhost',
-            port: 3000,
-            server: { baseDir: ['dist'] },
-            files: ['./dist/*', '**/*.html']
-        }),
+        // new BrowserSyncPlugin({
+        //     host: 'localhost',
+        //     port: 5000,
+        //     server: { baseDir: ['dist'] },
+        //     files: ['./dist/*', '**/*.html'],
+        //
+        // },{
+        //     // prevent BrowserSync from reloading the page
+        //     // and let Webpack Dev Server take care of this
+        //     reload: false
+        // }),
 
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'public/index.html'),
@@ -172,6 +204,5 @@ module.exports = {
             preload: 'swap'
         }),
     ],
-    watch: true,
-    devtool: "cheap-source-map"
+    devtool: "eval-source-map"
 };

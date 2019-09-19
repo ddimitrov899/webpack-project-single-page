@@ -13,7 +13,7 @@ class ArticleComponent extends Component {
 
         this.articles = [{
             image: articleFirstImage,
-            title: 'Test',
+            title: 'Where does it come from?',
             description: 'dsadsa'
         }, {
             image: articleSecImage,
