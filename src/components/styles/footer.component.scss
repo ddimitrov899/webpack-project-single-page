@@ -1,0 +1,18 @@
+.footer {
+  hr {
+    margin-top: 0;
+    background-color: #E04A23;
+  }
+  p {
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+    line-height: 25px;
+    font-weight: 300;
+    strong {
+      font-weight: 600;
+    }
+  }
+}
+
+@import "./phone.component";

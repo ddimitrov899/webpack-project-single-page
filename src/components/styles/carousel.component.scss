@@ -1,0 +1,16 @@
+$carousel-height: 80vh !default;
+$carousel-item-height: $carousel-height / 2 !default;
+$carousel-item-width: $carousel-item-height !default;
+@import '~materialize-css/sass/components/carousel';
+
+.carousel {
+  &.carousel-slider {
+    .carousel-item {
+      display: block;
+      img {
+        object-fit: cover;
+      }
+    }
+  }
+}
+

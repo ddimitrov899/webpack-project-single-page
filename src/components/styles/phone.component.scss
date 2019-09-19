@@ -1,0 +1,21 @@
+@media screen and (max-width: 986px) {
+
+  img {
+    width: 100%;
+  }
+  main .article {
+    margin-top: -50px;
+    .vc_row-fluid, main .article .vc_row-fluid .stations {
+      //height: 220px;
+    }
+  }
+  .player {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 986px) {
+  .footer p {
+    font-size: 14px;
+  }
+}

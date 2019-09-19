@@ -1,0 +1,29 @@
+.card {
+  border-radius: 0;
+  .card-article {
+    padding: 20px;
+    text-decoration: none;
+
+    &:hover, &:active {
+
+      text-decoration: none;
+
+      h5 {
+        color: black;
+      }
+    }
+
+    .card-body {
+      position: relative;
+      margin: 0 auto;
+      bottom: 600px;
+      width: 450px;
+      background: rgba(0, 0, 0, 0.4);
+
+      h5 {
+        color: white;
+        text-align: center;
+      }
+    }
+  }
+}
