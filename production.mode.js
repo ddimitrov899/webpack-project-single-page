@@ -10,6 +10,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const PurgeCSSPlugin = require('purgecss-webpack-plugin')
 const Critters = require('critters-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
 module.exports = () => {
   return ({
 
@@ -20,6 +21,22 @@ module.exports = () => {
       publicPath: '/'
     },
     optimization: {
+
+      minimize: true,
+      minimizer: [
+        new TerserPlugin({
+          test: /\.js(\?.*)?$/i,
+          exclude: /node_modules/,
+          cache: true,
+          parallel: true,
+          terserOptions: {
+            warnings: true,
+            output: {
+              comments: false
+            }
+          }
+        })
+      ],
       splitChunks: {
         cacheGroups: {
           styles: {
