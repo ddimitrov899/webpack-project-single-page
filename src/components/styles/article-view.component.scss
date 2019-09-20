@@ -1,5 +1,4 @@
-@import "bootstrap-variables";
-@import "~bootstrap/scss/card";
+
 .article {
   h1 {
     text-align: center;
@@ -7,6 +6,9 @@
   }
   img {
     width: 100%;
+    max-width: 880px;
+    margin: 0 auto;
+    display: block;
   }
   div.col {
     margin-top: 10px;
