@@ -10,6 +10,7 @@ function App() {
             <main id="content">
                 <HeaderComponent/>
                 <MainRouterComponent/>
+                <FooterComponent/>
             </main>
         </div>
     );

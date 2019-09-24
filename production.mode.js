@@ -1,16 +1,16 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const path = require('path')
-const glob = require('glob-all')
-const webpack = require('webpack')
-const autoPrecixer = require('autoprefixer')
-const cssNano = require('cssnano')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
+const glob = require('glob-all');
+const webpack = require('webpack');
+const autoPrecixer = require('autoprefixer');
+const cssNano = require('cssnano');
+const postCssPresetEnv = require('postcss-preset-env');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-
-const PurgeCSSPlugin = require('purgecss-webpack-plugin')
-const Critters = require('critters-webpack-plugin')
-const TerserPlugin = require('terser-webpack-plugin')
+const PurgeCSSPlugin = require('purgecss-webpack-plugin');
+const Critters = require('critters-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 module.exports = () => {
   return ({
 
@@ -105,7 +105,16 @@ module.exports = () => {
             },
             {
               loader: 'sass-loader'
-            }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                ident: 'postcss',
+                plugins: [
+                  postCssPresetEnv()
+                ]
+              }
+            },
           ]
         },
         {
@@ -206,4 +215,4 @@ module.exports = () => {
       })
     ]
   })
-}
+};

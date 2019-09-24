@@ -48,8 +48,8 @@ class HeaderComponent extends Component {
                                                                      "logo-small": !this.state.visible
                                                                  })}
                                                                  alt="logo"/></Link>
-                        <div className="position">
-                            <ul className="hide-on-med-and-down">
+                        <div className="position ">
+                            <ul className="right">
                                 <li>
                                     <Link to="/">Home</Link>
                                 </li>

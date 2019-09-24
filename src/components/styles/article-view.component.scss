@@ -1,8 +1,9 @@
-
+@import "variables";
 .article {
   h1 {
     text-align: center;
     margin: 0;
+    color: $primary-color-text;
   }
   img {
     width: 100%;
@@ -12,5 +13,8 @@
   }
   div.col {
     margin-top: 10px;
+    p{
+      color: $primary-color-text;
+    }
   }
 }

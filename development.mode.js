@@ -1,10 +1,14 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const path = require('path')
-const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const autoPrecixer = require('autoprefixer');
+const cssNano = require('cssnano');
+const postCssPresetEnv = require('postcss-preset-env');
+const postcssCustomMedia = require('postcss-custom-media');
+const minmax = require('postcss-media-minmax');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin')
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 module.exports = () => {
   return ({
 
@@ -12,7 +16,8 @@ module.exports = () => {
     entry: path.resolve(__dirname, 'src/index'),
     output: {
       path: path.resolve(__dirname, 'dist'),
-      publicPath: '/'
+      publicPath: '/',
+      filename: 'script/[name].bundle.js'
     },
     devServer: {
       historyApiFallback: true,
@@ -38,7 +43,7 @@ module.exports = () => {
             {
               loader: 'babel-loader',
               options: {
-                cacheDirectiry: true
+                cacheDirectory: true
               }
             }
           ]
@@ -54,12 +59,36 @@ module.exports = () => {
               loader: 'css-loader',
               options: {
                 importLoaders: 1,
-                sourceMap: true
+                sourceMap: true,
+                url: true,
+              }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                ident: 'postcss-2',
+                sourceMap: true,
+                plugins: [
+                  autoPrecixer(),
+                  cssNano()
+                ]
               }
             },
             {
               loader: 'sass-loader'
-            }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                ident: 'postcss',
+                sourceMap:true,
+                plugins: [
+                  postCssPresetEnv(),
+                  postcssCustomMedia(),
+                  minmax()
+                ]
+              }
+            },
           ]
         },
         {
@@ -154,4 +183,4 @@ module.exports = () => {
     ],
     devtool: 'eval-source-map'
   })
-}
+};

@@ -1,12 +1,14 @@
-$carousel-height: 80vh !default;
-$carousel-item-height: $carousel-height / 2 !default;
-$carousel-item-width: $carousel-item-height !default;
-@import '~materialize-css/sass/components/carousel';
-
 .carousel {
+  height: 80vh !important;
+  @media only screen and (max-width: 650px) {
+    height: 30vh !important;
+
+  }
+
   &.carousel-slider {
     .carousel-item {
       display: block;
+
       img {
         object-fit: cover;
       }

@@ -12,12 +12,16 @@
         color: black;
       }
     }
-
+    .card-img-top{
+      width: 100%;
+      display: block;
+    }
     .card-body {
       position: relative;
       margin: 0 auto;
-      bottom: 600px;
-      width: 450px;
+      bottom: 100px;
+      width: 100%;
+      height: 83px;
       background: rgba(0, 0, 0, 0.4);
 
       h5 {
