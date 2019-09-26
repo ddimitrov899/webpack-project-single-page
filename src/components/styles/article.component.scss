@@ -2,6 +2,8 @@
   border-radius: 0;
   .card-article {
     padding: 20px;
+    max-height: 1300px;
+    display: block;
     text-decoration: none;
 
     &:hover, &:active {

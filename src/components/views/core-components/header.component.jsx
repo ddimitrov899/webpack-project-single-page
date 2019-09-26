@@ -39,10 +39,10 @@ class HeaderComponent extends Component {
     render() {
         return (
             <header className="navbar-fixed">
-                <nav className={classNames("nav", {
-                    "nav-small": !this.state.visible
-                })}>
-                    <div className="nav-wrapper">
+                <nav className="nav">
+                    <div className={classNames("nav-wrapper", {
+                        "nav-small": !this.state.visible
+                    })}>
                         <Link to="/" className="brand-logo"><img src={logo}
                                                                  className={classNames("logo", {
                                                                      "logo-small": !this.state.visible

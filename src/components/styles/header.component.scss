@@ -4,16 +4,29 @@
   .nav {
     background-color: white;
     box-shadow: none;
+
     .nav-wrapper {
-      width: 60%;
+      width: 90%;
       margin: 0 auto;
+      transition: width .5s;
+
+      &.nav-small {
+        width: 60%;
+      }
+
       .brand-logo {
         .logo {
-          width: 100px;
+          width: 120px;
+
+          &.logo-small {
+            width: 100px;
+          }
         }
       }
+
       a {
         color: $link-color;
+
         &:hover {
           color: $hover-link-color;
           background-color: $hover-link-background-color;
