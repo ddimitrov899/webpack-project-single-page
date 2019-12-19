@@ -1,0 +1,17 @@
+@import './variables';
+.booking {
+  text-align: center;
+}
+
+form.col {
+
+  .btn {
+    color: $link-color;
+    background-color: $hover-link-background-color;
+    &:hover {
+      background-color: $link-color;
+      color: $hover-link-color;
+    }
+  }
+
+}

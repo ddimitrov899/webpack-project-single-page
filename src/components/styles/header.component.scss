@@ -24,12 +24,14 @@
         }
       }
 
-      a {
-        color: $link-color;
+      ul {
+        a {
+          color: $link-color;
 
-        &:hover {
-          color: $hover-link-color;
-          background-color: $hover-link-background-color;
+          &:hover {
+            color: $hover-link-color;
+            background-color: $hover-link-background-color;
+          }
         }
       }
     }

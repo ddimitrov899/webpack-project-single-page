@@ -28,8 +28,8 @@ class HeaderComponent extends Component {
         const {prevScrollPos} = this.state;
         const currentScrollPos = window.pageYOffset;
 
-        const visible = prevScrollPos > currentScrollPos && currentScrollPos <= 3;
-
+        let visible = prevScrollPos > currentScrollPos && currentScrollPos <= 3;
+        visible = visible || window.innerWidth < 1000;
         this.setState({
             prevScrollPos: currentScrollPos,
             visible
@@ -54,7 +54,13 @@ class HeaderComponent extends Component {
                                     <Link to="/">Home</Link>
                                 </li>
                                 <li>
-                                    <Link to="/media">Media</Link>
+                                    <Link to="/about">Abaut</Link>
+                                </li>
+                                <li>
+                                    <Link to="/colections">Colections</Link>
+                                </li>
+                                <li>
+                                    <Link to="/booking">Booking</Link>
                                 </li>
                                 <li>
                                     <Link to="/contacts">Contacts</Link>

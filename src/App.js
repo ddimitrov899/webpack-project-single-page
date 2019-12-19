@@ -7,11 +7,12 @@ import './App.scss';
 function App() {
     return (
         <div className="App">
+            <HeaderComponent />
             <main id="content">
-                <HeaderComponent/>
-                <MainRouterComponent/>
-                <FooterComponent/>
+
+                <MainRouterComponent />
             </main>
+            <FooterComponent />
         </div>
     );
 }

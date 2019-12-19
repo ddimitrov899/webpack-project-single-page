@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
-import './../components/styles/article.component.scss'
+import './../../../../styles/article.component.scss'
 class ArticleModel extends Component {
     constructor(props) {
         super(props);

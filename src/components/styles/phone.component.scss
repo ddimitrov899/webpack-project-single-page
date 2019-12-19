@@ -5,18 +5,23 @@
   }
   main .article {
     margin-top: -50px;
-
-    .vc_row-fluid, main .article .vc_row-fluid .stations {
-      //height: 220px;
-    }
   }
   .player {
     width: 90%;
   }
 }
 
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 986px) {
   @import "variables";
+  #content {
+    .carousel {
+      height: 57vh !important;
+    }
+    margin-top: 100px;
+    .card .card-article {
+      max-height: 600px;
+    }
+  }
   .navbar-fixed {
 
     .nav {
@@ -34,6 +39,8 @@
         display: block;
         background-color: white;
         height: 100px;
+        margin: 0;
+        width: 100%;
 
         .brand-logo {
           position: relative;
@@ -58,11 +65,13 @@
 
         .right {
           display: block;
-          width: 250px;
+          width: auto;
           text-align: center;
           height: 20px;
           margin: 0 auto;
-
+          float: none !important;
+              left: 25%;
+    position: relative;
         }
       }
     }
